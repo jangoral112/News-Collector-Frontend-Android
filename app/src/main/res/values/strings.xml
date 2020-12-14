@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NewsCollectorAndroid</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="articles">Articles</string>
+    <string name="subscriptions">Subscriptions</string>
+    <string name="keywords">Keywords</string>
+    <string name="settings">Settings</string>
 </resources>

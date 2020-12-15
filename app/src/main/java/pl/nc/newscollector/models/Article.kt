@@ -6,5 +6,7 @@ data class Article (
     val description: String,
     val link: String,
     val keywords: String, // TODO Investigate if we provide user with keywords or single keyword
+    val websiteName: String,
+    val feedName: String,
     var isExpanded: Boolean = false
 )

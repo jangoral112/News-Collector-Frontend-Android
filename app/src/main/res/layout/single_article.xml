@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -42,6 +43,50 @@
 
 
                 <TextView
+                    android:id="@+id/tvFeedName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Feed Name:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/static_words"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/tvArticleFeedName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvWebsiteName" />
+
+                <TextView
+                    android:id="@+id/tvArticleFeedName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Africa"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvArticleWebsiteName" />
+
+                <TextView
+                    android:id="@+id/tvWebsiteName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:text="Website Name:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/static_words"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/tvArticleWebsiteName"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvArticleWebsiteName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="CNN"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
                     android:id="@+id/tvArticleDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -56,12 +101,11 @@
                     android:id="@+id/tvArticleKeyword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="8dp"
                     android:text="Covid"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toEndOf="@+id/tvKeyword"
+                    app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
 
                 <TextView
                     android:id="@+id/tvReleaseDate"
@@ -79,25 +123,24 @@
                     android:id="@+id/tvKeyword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
                     android:text="Keywords:"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/static_words"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/tvArticleKeyword"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
 
                 <TextView
                     android:id="@+id/tvDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
                     android:text="Description:"
                     android:textColor="@color/static_words"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvKeyword" />
 
                 <TextView
                     android:id="@+id/tvArticleDescription"

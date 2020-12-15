@@ -27,6 +27,8 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
         holder.tvArticleDescription.text = article.description
         holder.tvArticleKeywords.text = article.keywords
         holder.tvArticleTitle.text = article.title
+        holder.tvArticleWebsiteName.text = article.websiteName
+        holder.tvArticleFeedName.text = article.feedName
         holder.clExpandable.visibility = if (article.isExpanded) View.VISIBLE else View.GONE
     }
 
@@ -36,8 +38,10 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
         val tvArticleDescription: TextView = articleView.findViewById<TextView>(R.id.tvArticleDescription)
         val tvArticleDate: TextView = articleView.findViewById<TextView>(R.id.tvArticleDate)
         val tvArticleKeywords: TextView = articleView.findViewById<TextView>(R.id.tvArticleKeyword)
-        val btnOpenArticle: Button = articleView.findViewById<Button>(R.id.btnOpenArticle)
+        val tvArticleWebsiteName: TextView = articleView.findViewById<TextView>(R.id.tvArticleWebsiteName)
+        val tvArticleFeedName: TextView = articleView.findViewById<TextView>(R.id.tvArticleFeedName)
         val clExpandable: ConstraintLayout = articleView.findViewById<ConstraintLayout>(R.id.clExpandable)
+        private val btnOpenArticle: Button = articleView.findViewById<Button>(R.id.btnOpenArticle)
 
         init {
             tvArticleTitle.setOnClickListener {

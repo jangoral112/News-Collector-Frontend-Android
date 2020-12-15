@@ -24,9 +24,9 @@ class ArticlesFragment : Fragment(R.layout.fragment_articles) {
 
     private fun getSampleData(): ArrayList<Article> {
         var article = ArrayList<Article>()
-        article.add(Article("Kradzieże na ulicy Matejki", "12.12.12", "Bla bla balb asbabasbasbas Bla bla balb asbabasbasbas Bla bla balb asbabasbasbas Bla bla balb asbabasbasbas Bla bla balb asbabasbasbas Bla bla balb asbabasbasbas Bla bla balb asbabasbasbas Bla bla balb asbabasbasbas Bla bla balb asbabasbasbas Bla bla balb asbabasbasbas", "https://www.youtube.com/watch?v=hbMqd0XRN34&t=616s", "covid"))
-        article.add(Article("Kotlin lang hahaha", "15.12.12", "Bla bla balb asbabasbasbas", "https://discuss.kotlinlang.org/t/ternary-operator/2116/2", "covid"))
-        article.add(Article("Pepper fajna hahaha stronga", "12.12.12", "Bla bla balb asbabasbasbas", "https://www.pepper.pl/", "covid"))
+        article.add(Article("Kradzieże na ulicy Matejki", "12.12.12", "asbasbas Bla bla balb asbabasbasbas", "https://www.youtube.com/watch?v=hbMqd0XRN34&t=616s", "covid", "CNN", "Europe"))
+        article.add(Article("Kotlin lang hahaha", "15.12.12", "Bla bla balb asbabasbasbas", "https://discuss.kotlinlang.org/t/ternary-operator/2116/2", "covid", "Onet", "Polacy"))
+        article.add(Article("Pepper fajna hahaha stronga", "12.12.12", "Bla bla balb asbabasbasbas", "https://www.pepper.pl/", "covid", "WP", "PiS"))
         return article
     }
 }

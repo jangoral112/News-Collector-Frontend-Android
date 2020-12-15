@@ -1,5 +1,7 @@
 package pl.nc.newscollector.adapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +31,7 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
     }
 
     inner class ArticleViewHolder(articleView: View) : RecyclerView.ViewHolder(articleView) {
+
         val tvArticleTitle: TextView = articleView.findViewById<TextView>(R.id.tvArticleTitle)
         val tvArticleDescription: TextView = articleView.findViewById<TextView>(R.id.tvArticleDescription)
         val tvArticleDate: TextView = articleView.findViewById<TextView>(R.id.tvArticleDate)
@@ -46,7 +49,7 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
 
 
             btnOpenArticle.setOnClickListener {
-                // Take parent's context and make an intent
+                itemView.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(articlesList[adapterPosition].link)))
             }
         }
     }

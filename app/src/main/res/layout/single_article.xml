@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:padding="4dp"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="4dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp" >
+        android:padding="8dp">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -64,9 +66,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:text="Release Date:"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/static_words"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -76,9 +78,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
                     android:text="Keywords:"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/static_words"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/tvArticleKeyword"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -90,6 +92,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:text="Description:"
+                    android:textColor="@color/static_words"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate" />
@@ -99,23 +102,24 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:layout_marginBottom="16dp"
                     android:text="Lorem Ipsum is simply dummy text of the printing and typesetting."
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                    app:layout_constraintVertical_bias="0.05" />
 
                 <Button
                     android:id="@+id/btnOpenArticle"
-                    android:layout_width="140dp"
-                    android:layout_height="35dp"
+                    android:layout_width="155dp"
+                    android:layout_height="45dp"
+                    android:backgroundTint="@color/open_in_browser"
                     android:text="OPEN IN BROWSER"
-                    android:textSize="9sp"
+                    android:textSize="11sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

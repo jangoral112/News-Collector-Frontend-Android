@@ -120,7 +120,7 @@
                     android:layout_width="165dp"
                     android:layout_height="45dp"
                     android:layout_marginTop="6dp"
-                    android:backgroundTint="@color/open_in_browser"
+                    android:backgroundTint="@color/button"
                     android:text="OPEN IN BROWSER"
                     android:textSize="12sp"
                     android:textStyle="normal"

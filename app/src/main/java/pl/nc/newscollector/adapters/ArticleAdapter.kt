@@ -14,7 +14,6 @@ import pl.nc.newscollector.models.Article
 
 class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         return ArticleViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.single_article, parent, false))
     }
@@ -32,9 +31,15 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
         holder.clExpandable.visibility = if (article.isExpanded) View.VISIBLE else View.GONE
     }
 
+    fun addArticle(article: Article) {
+        articlesList.add(article)
+        notifyItemInserted(articlesList.size - 1)
+    }
+    
+
     inner class ArticleViewHolder(articleView: View) : RecyclerView.ViewHolder(articleView) {
 
-        val tvArticleTitle: TextView = articleView.findViewById<TextView>(R.id.tvArticleTitle)
+        val tvArticleTitle: TextView = articleView.findViewById<TextView>(R.id.tvWebsiteName)
         val tvArticleDescription: TextView = articleView.findViewById<TextView>(R.id.tvArticleDescription)
         val tvArticleDate: TextView = articleView.findViewById<TextView>(R.id.tvArticleDate)
         val tvArticleKeywords: TextView = articleView.findViewById<TextView>(R.id.tvArticleKeyword)
@@ -49,6 +54,7 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
                     isExpanded = !isExpanded
                     notifyItemChanged(adapterPosition)
                 }
+
             }
 
 

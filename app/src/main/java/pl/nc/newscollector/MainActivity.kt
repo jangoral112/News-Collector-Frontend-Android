@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val articlesFragment = ArticlesFragment()
         val subscriptionsFragment = SubscriptionsFragment()
         val keywordsFragment = KeywordsFragment()
@@ -45,4 +44,5 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
     }
+
 }

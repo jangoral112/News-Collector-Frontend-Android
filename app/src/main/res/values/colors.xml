@@ -10,4 +10,5 @@
     <color name="button">#7EB9C1</color>
     <color name="static_words">#FF47061A</color>
     <color name="border">#FF47061A</color>
+    <color name="light_border">#272022</color>
 </resources>

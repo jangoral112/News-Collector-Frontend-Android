@@ -39,14 +39,14 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
 
     inner class ArticleViewHolder(articleView: View) : RecyclerView.ViewHolder(articleView) {
 
-        val tvArticleTitle: TextView = articleView.findViewById<TextView>(R.id.tvWebsiteName)
-        val tvArticleDescription: TextView = articleView.findViewById<TextView>(R.id.tvArticleDescription)
-        val tvArticleDate: TextView = articleView.findViewById<TextView>(R.id.tvArticleDate)
-        val tvArticleKeywords: TextView = articleView.findViewById<TextView>(R.id.tvArticleKeyword)
-        val tvArticleWebsiteName: TextView = articleView.findViewById<TextView>(R.id.tvArticleWebsiteName)
-        val tvArticleFeedName: TextView = articleView.findViewById<TextView>(R.id.tvArticleFeedName)
-        val clExpandable: ConstraintLayout = articleView.findViewById<ConstraintLayout>(R.id.clExpandable)
-        private val btnOpenArticle: Button = articleView.findViewById<Button>(R.id.btnOpenArticle)
+        val tvArticleTitle: TextView = articleView.findViewById(R.id.tvWebsiteName)
+        val tvArticleDescription: TextView = articleView.findViewById(R.id.tvArticleDescription)
+        val tvArticleDate: TextView = articleView.findViewById(R.id.tvArticleDate)
+        val tvArticleKeywords: TextView = articleView.findViewById(R.id.tvArticleKeyword)
+        val tvArticleWebsiteName: TextView = articleView.findViewById(R.id.tvArticleWebsiteName)
+        val tvArticleFeedName: TextView = articleView.findViewById(R.id.tvArticleFeedName)
+        val clExpandable: ConstraintLayout = articleView.findViewById(R.id.clExpandable)
+        private val btnOpenArticle: Button = articleView.findViewById(R.id.btnOpenArticle)
 
         init {
             tvArticleTitle.setOnClickListener {
@@ -54,10 +54,7 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
                     isExpanded = !isExpanded
                     notifyItemChanged(adapterPosition)
                 }
-
             }
-
-
             btnOpenArticle.setOnClickListener {
                 itemView.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(articlesList[adapterPosition].link)))
             }

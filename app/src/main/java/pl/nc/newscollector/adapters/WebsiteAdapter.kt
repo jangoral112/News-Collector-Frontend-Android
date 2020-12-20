@@ -1,12 +1,15 @@
 package pl.nc.newscollector.adapters
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import pl.nc.newscollector.R
 import pl.nc.newscollector.models.Website
+import java.util.function.BiFunction
 
 class WebsiteAdapter(var websiteList: ArrayList<Website>) : RecyclerView.Adapter<WebsiteAdapter.WebsiteViewHolder>() {
 
@@ -25,9 +28,21 @@ class WebsiteAdapter(var websiteList: ArrayList<Website>) : RecyclerView.Adapter
         }
     }
 
+    fun getSubscribedFeeds(): MutableMap<String, ArrayList<String>> {
+        val subscribedFeeds = mutableMapOf<String, ArrayList<String>>()
+        websiteList.forEach { website ->
+            website.feeds.forEach { feed ->
+                if (feed.isChecked)
+                    subscribedFeeds.getOrPut(website.name, ::arrayListOf) += feed.name
+            }
+        }
+        return subscribedFeeds;
+    }
+
+
     inner class WebsiteViewHolder(websiteView: View) : RecyclerView.ViewHolder(websiteView) {
-        val tvWebsiteName = websiteView.findViewById<TextView>(R.id.tvWebsiteName)
-        var rvFeeds = websiteView.findViewById<RecyclerView>(R.id.rvFeeds)
+        val tvWebsiteName: TextView = websiteView.findViewById(R.id.tvWebsiteName)
+        var rvFeeds: RecyclerView = websiteView.findViewById(R.id.rvFeeds)
 
         init {
             tvWebsiteName.setOnClickListener {
@@ -35,7 +50,6 @@ class WebsiteAdapter(var websiteList: ArrayList<Website>) : RecyclerView.Adapter
                     isExpanded = !isExpanded
                     notifyItemChanged(adapterPosition)
                 }
-
             }
         }
     }

@@ -11,12 +11,6 @@ import pl.nc.newscollector.models.Feed
 
 class FeedAdapter(var feedList: ArrayList<Feed>) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
 
-
-    inner class FeedViewHolder(feedView: View) : RecyclerView.ViewHolder(feedView) {
-        val tvFeedName = feedView.findViewById<TextView>(R.id.tvFeedName)
-        val cbFeed = feedView.findViewById<CheckBox>(R.id.cbFeed)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         return FeedViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.single_feed, parent, false))
     }
@@ -24,7 +18,6 @@ class FeedAdapter(var feedList: ArrayList<Feed>) : RecyclerView.Adapter<FeedAdap
     override fun getItemCount(): Int = feedList.size
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
-
         val feed = feedList[position]
         holder.apply {
             tvFeedName.text = feed.name
@@ -33,8 +26,11 @@ class FeedAdapter(var feedList: ArrayList<Feed>) : RecyclerView.Adapter<FeedAdap
                 feed.isChecked = !feed.isChecked
             }
         }
-
     }
 
+    inner class FeedViewHolder(feedView: View) : RecyclerView.ViewHolder(feedView) {
+        val tvFeedName: TextView = feedView.findViewById(R.id.tvFeedName)
+        val cbFeed: CheckBox = feedView.findViewById(R.id.cbFeed)
+    }
 
 }

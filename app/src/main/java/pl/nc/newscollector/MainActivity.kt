@@ -40,7 +40,9 @@ class MainActivity : AppCompatActivity() {
         return mapOf(
                 "SUBSCRIPTIONS_UPDATE" to "$baseURL/feeds$authKeyParam",
                 "SUBSCRIPTIONS_GET" to "$baseURL/feeds/list-all",
-                "ARTICLES_GET" to "$baseURL/news$authKeyParam"
+                "ARTICLES_GET" to "$baseURL/news$authKeyParam",
+                "KEYWORDS_GET" to "$baseURL/keywords/for-user$authKeyParam",
+                "KEYWORDS_PUT" to "$baseURL/keywords/for-user$authKeyParam"
         )
     }
 

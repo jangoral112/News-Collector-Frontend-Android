@@ -1,6 +1,6 @@
 package pl.nc.newscollector.models
 
-data class Feed (
-        val name: String,
+data class Keyword(
+        val value: String,
         var isChecked: Boolean = false
 )

@@ -14,7 +14,13 @@ import java.util.function.BiFunction
 class WebsiteAdapter(var websiteList: ArrayList<Website>) : RecyclerView.Adapter<WebsiteAdapter.WebsiteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WebsiteViewHolder {
-        return WebsiteViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.single_website, parent, false))
+        return WebsiteViewHolder(
+                LayoutInflater.from(parent.context).inflate(
+                        R.layout.single_website,
+                        parent,
+                        false
+                )
+        )
     }
 
     override fun getItemCount(): Int = websiteList.size

@@ -13,8 +13,7 @@ import android.widget.Toast.makeText as toast
 
 class ArticlesFragment(endpoints: Map<String, String>) : Fragment(R.layout.fragment_articles) {
 
-    private val getArticlesURL = endpoints["ARTICLES_GET"] ?:
-                        error(message = "ARTICLES_GET => url is not set")
+    private val getArticlesURL = endpoints["ARTICLES_GET"] ?: error(message = "ARTICLES_GET => url is not set")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

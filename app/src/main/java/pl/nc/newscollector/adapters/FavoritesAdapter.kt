@@ -21,7 +21,7 @@ class FavoritesAdapter(var articlesList: ArrayList<Article>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesViewHolder {
         return FavoritesViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.single_article, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.single_favorite, parent, false)
         )
     }
 

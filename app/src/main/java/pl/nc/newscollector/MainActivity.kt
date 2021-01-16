@@ -1,7 +1,11 @@
 package pl.nc.newscollector
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -11,6 +15,7 @@ import pl.nc.newscollector.fragments.FavoritesFragment
 import pl.nc.newscollector.fragments.SubscriptionsFragment
 
 class MainActivity : AppCompatActivity() {
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

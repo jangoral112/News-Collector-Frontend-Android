@@ -1,5 +1,9 @@
 package pl.nc.newscollector.fragments
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -15,9 +19,20 @@ class ArticlesFragment(endpoints: Map<String, String>) : Fragment(R.layout.fragm
 
     private val getArticlesURL = endpoints["ARTICLES_GET"] ?: error(message = "ARTICLES_GET => url is not set")
 
+    fun vibratePhone() {
+        val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(200)
+        }
+    }
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val articleAdapter = ArticleAdapter(ArrayList())
+        val articleAdapter = ArticleAdapter(arrayListOf(), this)
         rvArticle.setHasFixedSize(true)
         rvArticle.adapter = articleAdapter
         getArticles()

@@ -9,17 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.edit
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import pl.nc.newscollector.R
+import pl.nc.newscollector.fragments.ArticlesFragment
 import pl.nc.newscollector.models.Article
-import kotlin.coroutines.coroutineContext
 
-class ArticleAdapter(var articlesList: ArrayList<Article>) :
+
+class ArticleAdapter(var articlesList: ArrayList<Article>, val fragment: ArticlesFragment) :
     RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -41,11 +40,17 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) :
         holder.clExpandable.visibility = if (article.isExpanded) View.VISIBLE else View.GONE
 
         holder.tvArticleTitle.setOnLongClickListener {
-            val preferences = it.context.getSharedPreferences("SAVED_ARTICLES", Context.MODE_PRIVATE)
+            fragment.vibratePhone()
+            val preferences = it.context.getSharedPreferences(
+                "SAVED_ARTICLES",
+                Context.MODE_PRIVATE
+            )
             val savedArticles: String? = preferences.getString("SAVED", null)
             preferences.edit {
                 val listOfArticles = savedArticles?.let {
-                    val arrayList = ArrayList(Gson().fromJson(it, Array<Article>::class.java).toList())
+                    val arrayList = ArrayList(
+                        Gson().fromJson(it, Array<Article>::class.java).toList()
+                    )
                     if (!arrayList.contains(article))
                         arrayList.add(article)
                     arrayList

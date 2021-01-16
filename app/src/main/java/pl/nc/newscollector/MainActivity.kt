@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         val keywordsFragment = KeywordsFragment(endpoints)
         val settingsFragment = FavoritesFragment(endpoints)
         setFragment(articlesFragment)
-
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.miArticles -> setFragment(articlesFragment)

@@ -9,28 +9,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.edit
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import pl.nc.newscollector.R
 import pl.nc.newscollector.models.Article
-import kotlin.coroutines.coroutineContext
 
-class ArticleAdapter(var articlesList: ArrayList<Article>) :
-    RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
+class FavoritesAdapter(var articlesList: ArrayList<Article>) :
+    RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        return ArticleViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesViewHolder {
+        return FavoritesViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.single_article, parent, false)
         )
     }
 
     override fun getItemCount() = articlesList.size
 
-    override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoritesViewHolder, position: Int) {
         val article = articlesList[position]
         holder.tvArticleDate.text = article.date
         holder.tvArticleDescription.text = article.description
@@ -39,27 +36,6 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) :
         holder.tvArticleWebsiteName.text = article.websiteName
         holder.tvArticleFeedName.text = article.feedName
         holder.clExpandable.visibility = if (article.isExpanded) View.VISIBLE else View.GONE
-
-        holder.tvArticleTitle.setOnLongClickListener {
-            val preferences = it.context.getSharedPreferences("SAVED_ARTICLES", Context.MODE_PRIVATE)
-            val savedArticles: String? = preferences.getString("SAVED", null)
-            preferences.edit {
-                val listOfArticles = savedArticles?.let {
-                    val arrayList = ArrayList(Gson().fromJson(it, Array<Article>::class.java).toList())
-                    if (!arrayList.contains(article))
-                        arrayList.add(article)
-                    arrayList
-                } ?: arrayListOf(article)
-                listOfArticles.forEach {
-                    Log.i("LIST", it.toString())
-                }
-                clear()
-                putString("SAVED", Gson().toJson(listOfArticles).toString())
-                apply()
-            }
-            Log.i("LONGCLICK", "CLICKED")
-            true
-        }
     }
 
     fun addArticle(article: Article) {
@@ -68,7 +44,8 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) :
     }
 
 
-    inner class ArticleViewHolder(articleView: View) : RecyclerView.ViewHolder(articleView) {
+
+    inner class FavoritesViewHolder(articleView: View) : RecyclerView.ViewHolder(articleView) {
 
         val tvArticleTitle: TextView = articleView.findViewById(R.id.tvWebsiteName)
         val tvArticleDescription: TextView = articleView.findViewById(R.id.tvArticleDescription)

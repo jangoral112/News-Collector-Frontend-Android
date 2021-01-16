@@ -9,8 +9,6 @@ import android.provider.Settings.Secure
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.edit
-import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.fuel.core.FuelManager
 import com.github.kittinunf.fuel.httpPost
 import kotlinx.android.synthetic.main.activity_start.*
 import android.provider.Settings.Secure.getString as getAndroidID

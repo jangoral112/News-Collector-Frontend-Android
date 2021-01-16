@@ -23,6 +23,7 @@
         android:id="@+id/cbFeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:buttonTint="@color/border"
         android:text="@null"
         android:translationX="12dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,21 +1,31 @@
 package pl.nc.newscollector.adapters
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.edit
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import pl.nc.newscollector.R
 import pl.nc.newscollector.models.Article
+import kotlin.coroutines.coroutineContext
 
-class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
+class ArticleAdapter(var articlesList: ArrayList<Article>) :
+    RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        return ArticleViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.single_article, parent, false))
+        return ArticleViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.single_article, parent, false)
+        )
     }
 
     override fun getItemCount() = articlesList.size
@@ -29,13 +39,33 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
         holder.tvArticleWebsiteName.text = article.websiteName
         holder.tvArticleFeedName.text = article.feedName
         holder.clExpandable.visibility = if (article.isExpanded) View.VISIBLE else View.GONE
+
+        holder.tvArticleTitle.setOnLongClickListener {
+            val preferences = it.context.getSharedPreferences("SAVED_ARTICLES", Context.MODE_PRIVATE)
+            val savedArticles: String? = preferences.getString("SAVED", null)
+            preferences.edit {
+                val listOfArticles = savedArticles?.let {
+                    val arrayList = ArrayList(Gson().fromJson(it, Array<Article>::class.java).toList())
+                    arrayList.add(article)
+                    arrayList
+                } ?: arrayListOf(article)
+                listOfArticles.forEach {
+                    Log.i("LIST", it.toString())
+                }
+                clear()
+                putString("SAVED", Gson().toJson(listOfArticles).toString())
+                apply()
+            }
+            Log.i("LONGCLICK", "CLICKED")
+            true
+        }
     }
 
     fun addArticle(article: Article) {
         articlesList.add(article)
         notifyItemInserted(articlesList.size - 1)
     }
-    
+
 
     inner class ArticleViewHolder(articleView: View) : RecyclerView.ViewHolder(articleView) {
 
@@ -49,6 +79,7 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
         private val btnOpenArticle: Button = articleView.findViewById(R.id.btnOpenArticle)
 
         init {
+
             tvArticleTitle.setOnClickListener {
                 articlesList[adapterPosition].apply {
                     isExpanded = !isExpanded
@@ -56,7 +87,12 @@ class ArticleAdapter(var articlesList: ArrayList<Article>) : RecyclerView.Adapte
                 }
             }
             btnOpenArticle.setOnClickListener {
-                itemView.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(articlesList[adapterPosition].link)))
+                itemView.context.startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(articlesList[adapterPosition].link)
+                    )
+                )
             }
         }
     }

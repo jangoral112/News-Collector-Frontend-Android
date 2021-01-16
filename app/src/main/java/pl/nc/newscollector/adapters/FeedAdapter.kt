@@ -22,11 +22,6 @@ class FeedAdapter(var feedList: ArrayList<Feed>) : RecyclerView.Adapter<FeedAdap
         val feed = feedList[position]
         holder.apply {
             tvFeedName.text = feed.name
-//            cbFeed.isChecked = feed.isChecked
-//            clFeed.setOnClickListener {
-//                feed.isChecked = !feed.isChecked
-//                cbFeed.isChecked = !cbFeed.isChecked
-//            }
             tvFeedName.setOnClickListener {
                 feed.isChecked = !feed.isChecked
                 cbFeed.isChecked = !cbFeed.isChecked

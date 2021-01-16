@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import pl.nc.newscollector.fragments.ArticlesFragment
 import pl.nc.newscollector.fragments.KeywordsFragment
-import pl.nc.newscollector.fragments.SettingsFragment
+import pl.nc.newscollector.fragments.FavoritesFragment
 import pl.nc.newscollector.fragments.SubscriptionsFragment
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val articlesFragment = ArticlesFragment(endpoints)
         val subscriptionsFragment = SubscriptionsFragment(endpoints)
         val keywordsFragment = KeywordsFragment(endpoints)
-        val settingsFragment = SettingsFragment(endpoints)
+        val settingsFragment = FavoritesFragment(endpoints)
         setFragment(articlesFragment)
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.miArticles -> setFragment(articlesFragment)
                 R.id.miSubscriptions -> setFragment(subscriptionsFragment)
                 R.id.miKeywords -> setFragment(keywordsFragment)
-                R.id.miSettings -> setFragment(settingsFragment)
+                R.id.miFavorites -> setFragment(settingsFragment)
             }
             true
         }

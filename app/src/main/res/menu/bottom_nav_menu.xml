@@ -17,7 +17,7 @@
         android:title="@string/keywords" />
 
     <item
-        android:id="@+id/miSettings"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/settings" />
+        android:id="@+id/miFavorites"
+        android:icon="@drawable/ic_favorites"
+        android:title="@string/favorites" />
 </menu>

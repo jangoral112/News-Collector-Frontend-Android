@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import pl.nc.newscollector.R
 import pl.nc.newscollector.models.Feed
@@ -21,6 +22,15 @@ class FeedAdapter(var feedList: ArrayList<Feed>) : RecyclerView.Adapter<FeedAdap
         val feed = feedList[position]
         holder.apply {
             tvFeedName.text = feed.name
+//            cbFeed.isChecked = feed.isChecked
+//            clFeed.setOnClickListener {
+//                feed.isChecked = !feed.isChecked
+//                cbFeed.isChecked = !cbFeed.isChecked
+//            }
+            tvFeedName.setOnClickListener {
+                feed.isChecked = !feed.isChecked
+                cbFeed.isChecked = !cbFeed.isChecked
+            }
             cbFeed.isChecked = feed.isChecked
             cbFeed.setOnCheckedChangeListener { _, isChecked ->
                 feed.isChecked = !feed.isChecked
@@ -31,6 +41,7 @@ class FeedAdapter(var feedList: ArrayList<Feed>) : RecyclerView.Adapter<FeedAdap
     inner class FeedViewHolder(feedView: View) : RecyclerView.ViewHolder(feedView) {
         val tvFeedName: TextView = feedView.findViewById(R.id.tvFeedName)
         val cbFeed: CheckBox = feedView.findViewById(R.id.cbFeed)
+        val clFeed: ConstraintLayout = feedView.findViewById(R.id.clFeed)
     }
 
 }

@@ -1,18 +1,14 @@
 package pl.nc.newscollector.adapters
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.edit
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import pl.nc.newscollector.R
 import pl.nc.newscollector.models.Article
 
@@ -47,7 +43,7 @@ class FavoritesAdapter(var articlesList: ArrayList<Article>) :
 
     inner class FavoritesViewHolder(articleView: View) : RecyclerView.ViewHolder(articleView) {
 
-        val tvArticleTitle: TextView = articleView.findViewById(R.id.tvWebsiteName)
+        val tvArticleTitle: TextView = articleView.findViewById(R.id.tvArticleTitle)
         val tvArticleDescription: TextView = articleView.findViewById(R.id.tvArticleDescription)
         val tvArticleDate: TextView = articleView.findViewById(R.id.tvArticleDate)
         val tvArticleKeywords: TextView = articleView.findViewById(R.id.tvArticleKeyword)

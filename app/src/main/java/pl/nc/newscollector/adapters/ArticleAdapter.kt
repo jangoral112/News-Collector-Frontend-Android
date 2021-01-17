@@ -75,7 +75,7 @@ class ArticleAdapter(var articlesList: ArrayList<Article>, val fragment: Article
 
     inner class ArticleViewHolder(articleView: View) : RecyclerView.ViewHolder(articleView) {
 
-        val tvArticleTitle: TextView = articleView.findViewById(R.id.tvWebsiteName)
+        val tvArticleTitle: TextView = articleView.findViewById(R.id.tvArticleTitle)
         val tvArticleDescription: TextView = articleView.findViewById(R.id.tvArticleDescription)
         val tvArticleDate: TextView = articleView.findViewById(R.id.tvArticleDate)
         val tvArticleKeywords: TextView = articleView.findViewById(R.id.tvArticleKeyword)

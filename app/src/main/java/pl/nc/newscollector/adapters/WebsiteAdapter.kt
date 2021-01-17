@@ -1,15 +1,12 @@
 package pl.nc.newscollector.adapters
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import pl.nc.newscollector.R
 import pl.nc.newscollector.models.Website
-import java.util.function.BiFunction
 
 class WebsiteAdapter(var websiteList: ArrayList<Website>) : RecyclerView.Adapter<WebsiteAdapter.WebsiteViewHolder>() {
 
@@ -47,7 +44,7 @@ class WebsiteAdapter(var websiteList: ArrayList<Website>) : RecyclerView.Adapter
 
 
     inner class WebsiteViewHolder(websiteView: View) : RecyclerView.ViewHolder(websiteView) {
-        val tvWebsiteName: TextView = websiteView.findViewById(R.id.tvWebsiteName)
+        val tvWebsiteName: TextView = websiteView.findViewById(R.id.tvArticleTitle)
         var rvFeeds: RecyclerView = websiteView.findViewById(R.id.rvFeeds)
 
         init {

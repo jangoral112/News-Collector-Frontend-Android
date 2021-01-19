@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             "SUBSCRIPTIONS_UPDATE" to "$baseURL/feeds$authKeyParam",
             "SUBSCRIPTIONS_GET" to "$baseURL/feeds/list-all",
             "ARTICLES_GET" to "$baseURL/news$authKeyParam",
+            "REFRESH_ARTICLES_GET" to "$baseURL/news/parsefeeds",
             "KEYWORDS_GET" to "$baseURL/keywords/for-user$authKeyParam",
             "KEYWORDS_PUT" to "$baseURL/keywords/for-user$authKeyParam"
         )

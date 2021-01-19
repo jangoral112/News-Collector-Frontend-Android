@@ -13,6 +13,8 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.edit
 import androidx.recyclerview.widget.RecyclerView
+import com.github.kittinunf.fuel.httpGet
+import com.github.kittinunf.result.Result
 import com.google.gson.Gson
 import pl.nc.newscollector.R
 import pl.nc.newscollector.fragments.ArticlesFragment
@@ -64,7 +66,8 @@ class ArticleAdapter(var articlesList: ArrayList<Article>, val fragment: Article
                 apply()
             }
             fragment.activity?.runOnUiThread {
-                Toast.makeText(fragment.activity, "SUCCESS: Added to favorites", Toast.LENGTH_SHORT).show()
+                Toast.makeText(fragment.activity, "SUCCESS: Added to favorites", Toast.LENGTH_SHORT)
+                    .show()
             }
             true
         }
@@ -73,6 +76,38 @@ class ArticleAdapter(var articlesList: ArrayList<Article>, val fragment: Article
     fun addArticle(article: Article) {
         articlesList.add(article)
         notifyItemInserted(articlesList.size - 1)
+    }
+
+    fun refreshArticles() {
+        val currentTimeMillis = System.currentTimeMillis()
+        fragment.refreshArticlesURL.httpGet().responseString { request, response, result ->
+            when (result) {
+                is Result.Success -> fragment.activity?.runOnUiThread {
+                    Toast.makeText(
+                        fragment.activity,
+                        "SUCCESS: Started parsing new articles",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                is Result.Failure -> fragment.activity?.runOnUiThread {
+                    Toast.makeText(
+                        fragment.activity,
+                        "ERROR: Refreshing new articles",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+        val preferences = fragment.requireActivity().getSharedPreferences("FETCHING_ARTICLES", Context.MODE_PRIVATE)
+        preferences.edit {
+            clear()
+            putLong("LAST_FETCH", currentTimeMillis)
+            apply()
+        }
+        val length = this.itemCount
+        articlesList.clear()
+        notifyItemRangeRemoved(0, length)
+        fragment.getArticles()
     }
 
 

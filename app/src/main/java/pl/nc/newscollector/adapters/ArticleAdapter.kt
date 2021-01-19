@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.edit
 import androidx.recyclerview.widget.RecyclerView
@@ -62,7 +63,9 @@ class ArticleAdapter(var articlesList: ArrayList<Article>, val fragment: Article
                 putString("SAVED", Gson().toJson(listOfArticles).toString())
                 apply()
             }
-            Log.i("LONGCLICK", "CLICKED")
+            fragment.activity?.runOnUiThread {
+                Toast.makeText(fragment.activity, "SUCCESS: Added to favorites", Toast.LENGTH_SHORT).show()
+            }
             true
         }
     }

@@ -16,8 +16,6 @@ import pl.nc.newscollector.fragments.SubscriptionsFragment
 
 class MainActivity : AppCompatActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val settingsFragment = FavoritesFragment(endpoints)
         setFragment(articlesFragment)
         bottomNavigationView.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.miArticles -> setFragment(articlesFragment)
                 R.id.miSubscriptions -> setFragment(subscriptionsFragment)
                 R.id.miKeywords -> setFragment(keywordsFragment)
@@ -42,11 +40,11 @@ class MainActivity : AppCompatActivity() {
         val baseURL = "https://g2alb3a3q6.execute-api.us-east-1.amazonaws.com/test/"
         val authKeyParam = "?authKey=${getAuthKey()}"
         return mapOf(
-                "SUBSCRIPTIONS_UPDATE" to "$baseURL/feeds$authKeyParam",
-                "SUBSCRIPTIONS_GET" to "$baseURL/feeds/list-all",
-                "ARTICLES_GET" to "$baseURL/news$authKeyParam",
-                "KEYWORDS_GET" to "$baseURL/keywords/for-user$authKeyParam",
-                "KEYWORDS_PUT" to "$baseURL/keywords/for-user$authKeyParam"
+            "SUBSCRIPTIONS_UPDATE" to "$baseURL/feeds$authKeyParam",
+            "SUBSCRIPTIONS_GET" to "$baseURL/feeds/list-all",
+            "ARTICLES_GET" to "$baseURL/news$authKeyParam",
+            "KEYWORDS_GET" to "$baseURL/keywords/for-user$authKeyParam",
+            "KEYWORDS_PUT" to "$baseURL/keywords/for-user$authKeyParam"
         )
     }
 

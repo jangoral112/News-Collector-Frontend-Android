@@ -61,8 +61,8 @@ class ArticlesFragment(endpoints: Map<String, String>) : Fragment(R.layout.fragm
         val preferences = requireActivity().getSharedPreferences("FETCHING_ARTICLES", Context.MODE_PRIVATE)
         val timeOfLastFetchMillis = preferences.getLong("LAST_FETCH", 0L)
         val currentTimeMillis = System.currentTimeMillis()
-        val fiveMinutes = 1000 * 60 * 5
-        if (timeOfLastFetchMillis!=0L && (currentTimeMillis - fiveMinutes) < timeOfLastFetchMillis)
+        val thirtySeconds = 1000 * 30
+        if (timeOfLastFetchMillis!=0L && (currentTimeMillis - thirtySeconds) < timeOfLastFetchMillis)
             return false
         return true
     }
@@ -81,9 +81,9 @@ class ArticlesFragment(endpoints: Map<String, String>) : Fragment(R.layout.fragm
                     }
                 }
                 is Result.Failure -> {
-                    activity?.runOnUiThread {
-                        toast(activity, "ERROR: Fetching articles", Toast.LENGTH_SHORT).show()
-                    }
+//                    activity?.runOnUiThread {
+//                        toast(activity, "ERROR: Fetching articles", Toast.LENGTH_SHORT).show()
+//                    }
                 }
             }
         }

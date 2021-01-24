@@ -15,7 +15,7 @@ import pl.nc.newscollector.adapters.ArticleAdapter
 import pl.nc.newscollector.adapters.FavoritesAdapter
 import pl.nc.newscollector.models.Article
 
-class FavoritesFragment(val endpoints: Map<String, String>) : Fragment(R.layout.fragment_favorites) {
+class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

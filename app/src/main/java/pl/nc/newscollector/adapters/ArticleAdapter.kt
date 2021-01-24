@@ -89,13 +89,13 @@ class ArticleAdapter(var articlesList: ArrayList<Article>, val fragment: Article
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                is Result.Failure -> fragment.activity?.runOnUiThread {
-                    Toast.makeText(
-                        fragment.activity,
-                        "ERROR: Refreshing new articles",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+//                is Result.Failure -> fragment.activity?.runOnUiThread {
+//                    Toast.makeText(
+//                        fragment.activity,
+//                        "ERROR: Refreshing new articles",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
             }
         }
         val preferences = fragment.requireActivity().getSharedPreferences("FETCHING_ARTICLES", Context.MODE_PRIVATE)

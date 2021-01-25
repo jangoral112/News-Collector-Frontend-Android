@@ -15,7 +15,7 @@ data class Article(
         val description: String,
         @field:SerializedName("news_link")
         val link: String,
-        @field:SerializedName("keyword_value")
+        @field:SerializedName("keywords_string")
         val keywords: String, // TODO Investigate if we provide user with keywords or single keyword
         @field:SerializedName("website_name")
         val websiteName: String,
